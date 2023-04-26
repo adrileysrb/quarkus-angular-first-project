@@ -7,8 +7,8 @@ import java.util.List;
 public interface CDService {
 
     public List<CD> findAll();
-    public CD findById(final Integer id);
-    public CD save(final CD employee);
-    public CD update(final CD employee);
-    public void deleteById(final Integer id);
+    public CD findById(final long id);
+    public CD save(final CD cd);
+    public CD update(final CD cd);
+    public void deleteById(final long id);
 }

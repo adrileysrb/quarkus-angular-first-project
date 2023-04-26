@@ -7,8 +7,8 @@ import java.util.List;
 public interface PurchaseOrderService {
 
     public List<PurchaseOrder> findAll();
-    public PurchaseOrder findById(final Integer id);
-    public PurchaseOrder save(final PurchaseOrder employee);
-    public PurchaseOrder update(final PurchaseOrder employee);
-    public void deleteById(final Integer id);
+    public PurchaseOrder findById(final long id);
+    public PurchaseOrder save(final PurchaseOrder purchaseOrder);
+    public PurchaseOrder update(final PurchaseOrder purchaseOrder);
+    public void deleteById(final long id);
 }

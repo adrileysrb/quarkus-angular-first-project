@@ -16,22 +16,22 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer findById(Integer id) {
+    public Customer findById(long id) {
         return null;
     }
 
     @Override
-    public Customer save(Customer employee) {
+    public Customer save(Customer customer) {
         return null;
     }
 
     @Override
-    public Customer update(Customer employee) {
+    public Customer update(Customer customer) {
         return null;
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(long id) {
 
     }
 }
