@@ -27,3 +27,13 @@ table {
     border-radius: 5px;
     padding: 5px;
   }
+
+  .action {
+    display: flex;
+    gap: 5px;
+  }
+
+  .button-insert {
+    margin-top: 2px;
+    float: right;
+  }

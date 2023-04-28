@@ -15,7 +15,7 @@ export class ArtistsComponent implements OnInit{
   
   dataSource = new MatTableDataSource<Artist>();
 
-  displayedColumns: string[] = ['id', 'name', 'bio', 'createdDate'];
+  displayedColumns: string[] = ['id', 'name', 'bio', 'createdDate', 'action'];
   
   formControl = new FormGroup({
     id: new FormControl(),
@@ -134,6 +134,14 @@ export class ArtistsComponent implements OnInit{
       );
     };
     return myFilterPredicate;
+  }
+
+  deleteArtist(id: number) {
+    //TODO
+  }
+
+  openEditForm(data: any) {
+    //TODO
   }
 
 }
