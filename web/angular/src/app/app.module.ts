@@ -16,13 +16,19 @@ import { ReactiveFormsModule  } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MenuComponent } from './menu/menu.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArtistsComponent
+    ArtistsComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +44,11 @@ import {MatIconModule} from '@angular/material/icon';
     MatDatepickerModule,
     MatButtonModule,
     MatNativeDateModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatListModule,
+    MatExpansionModule,
     MatIconModule
   ],
   providers: [],
