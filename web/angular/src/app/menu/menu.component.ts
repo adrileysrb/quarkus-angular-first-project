@@ -11,12 +11,12 @@ export class MenuComponent {
     {
       displayName: 'Home',
       iconName: 'home',
-      route: 'home',
+      route: '/home',
     },     
     {
-      displayName: 'Teste 1',
-      iconName: 'desktop_windows',
-      route: 'escritorio',
+      displayName: 'Artists',
+      iconName: 'people',
+      route: '/artists',
     },        
     {
       displayName: 'Teste 2',

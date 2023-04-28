@@ -23,12 +23,15 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArtistsComponent,
-    MenuComponent
+    MenuComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatMenuModule,
     MatListModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
