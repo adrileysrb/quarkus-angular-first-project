@@ -10,3 +10,20 @@ table {
   td, th {
     width: 25%;
   }
+
+  .margin-table {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .margin-form {
+    margin-left: 5%;
+    margin-right: 45%;
+    margin-bottom: 5px;
+  }
+
+  .round1 {
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+  }

@@ -12,6 +12,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule  } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatButtonModule} from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
