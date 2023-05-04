@@ -16,7 +16,7 @@ export class MenuComponent {
     {
       displayName: 'Artists',
       iconName: 'people',
-      route: '/artists',
+      route: '/artist',
     },        
     {
       displayName: 'Teste 2',
