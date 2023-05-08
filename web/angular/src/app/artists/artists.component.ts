@@ -5,6 +5,7 @@ import { Artist } from '../artist';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { InMemoryDatabase } from './inMemoryDatabase';
 
 @Component({
   selector: 'app-artists',
@@ -13,6 +14,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 })
 export class ArtistsComponent implements OnInit{
   
+  inMemoryDatabase = new InMemoryDatabase();
+
   dataSource = new MatTableDataSource<Artist>();
 
   displayedColumns: string[] = ['id', 'name', 'bio', 'createdDate', 'action'];
@@ -57,9 +60,27 @@ export class ArtistsComponent implements OnInit{
     this.artistService.getAll().subscribe({
       next: (v) => {
         //console.log(v)
-        this.dataSource = new MatTableDataSource<Artist>(v)
+        this.dataSource = new MatTableDataSource<Artist>(v);
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e);
+        this.inMemoryDatabase.getAll().subscribe({
+          next: (v) => {
+            //console.log(v)
+            this.dataSource = new MatTableDataSource<Artist>(v);
+          },
+          error: (e) => {
+            console.error(e);
+          },
+          complete: () => {
+            console.info('complete') 
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort 
+            this.dataSource.filterPredicate = this.filterTable();
+            this.dataSource.filter = JSON.stringify(this.filteredValues);
+          }
+        })
+      },
       complete: () => {
         console.info('complete') 
         this.dataSource.paginator = this.paginator;
