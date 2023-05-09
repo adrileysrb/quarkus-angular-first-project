@@ -26,13 +26,21 @@ import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ArtistDialogComponent } from './artists/artist-dialog/artist-dialog.component';
+import { ArtistEditComponent } from './artists/artist-edit/artist-edit.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ArtistsComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    ArtistDialogComponent,
+    ArtistEditComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +63,8 @@ import { RouterModule } from '@angular/router';
     MatExpansionModule,
     MatIconModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

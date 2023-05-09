@@ -1,22 +1,19 @@
 import { Component } from '@angular/core';
-import { User } from './user';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { Artist } from '../../artist';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-artist-dialog',
-  templateUrl: './artist-dialog.component.html',
-  styleUrls: ['./artist-dialog.component.css']
+  selector: 'app-artist-edit',
+  templateUrl: './artist-edit.component.html',
+  styleUrls: ['./artist-edit.component.css']
 })
-export class ArtistDialogComponent {
+export class ArtistEditComponent {
   artist: Artist = {} as Artist;
   artistForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<ArtistDialogComponent>
+    private fb: FormBuilder
   ){
     this.artistForm = this.fb.group({
       id: '',
@@ -30,7 +27,6 @@ export class ArtistDialogComponent {
   onFormSubmit() {
     if (this.artistForm.valid) {
       console.log(this.artistForm.value)
-      this.dialogRef.close(true)
     }
   }
 
@@ -45,5 +41,4 @@ export class ArtistDialogComponent {
 
     return '';
   };
-  
 }
