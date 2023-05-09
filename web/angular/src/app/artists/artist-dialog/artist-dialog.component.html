@@ -1,1 +1,17 @@
-<p>artist-dialog works!</p>
+
+<form #ngForm="ngForm" (ngSubmit)="onSubmitTemplateBased()">
+    <p>
+        <label>First Name:</label>
+        <input type="text" [(ngModel)]="user.name" required>
+    </p>
+    
+    <p>
+        <label>Password:</label>
+        <input type="password" [(ngModel)]="user.password" required>
+    </p>
+
+    <p>
+        <button type="submit" [disabled]="!ngForm.valid">Submit</button>
+    </p>
+    
+</form>
