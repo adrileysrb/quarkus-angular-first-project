@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { Artist } from '../../artist';
+import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-artist-edit',
@@ -13,7 +17,9 @@ export class ArtistEditComponent {
   artistForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private router: Router
   ){
     this.artistForm = this.fb.group({
       id: '',
@@ -41,4 +47,25 @@ export class ArtistEditComponent {
 
     return '';
   };
+
+  openDialog2() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent,{
+      data:{
+        message: 'Are you sure want to insert?',
+        buttonText: {
+          ok: 'Save',
+          cancel: 'Cancel'
+        }
+      }
+    }
+    );
+  
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        console.log("Confirmed")
+        this.router.navigate(['artist'])
+      }
+    });
+  }
+
 }
