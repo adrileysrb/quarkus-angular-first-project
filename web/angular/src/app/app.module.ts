@@ -30,6 +30,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ArtistDialogComponent } from './artists/artist-dialog/artist-dialog.component';
 import { ArtistEditComponent } from './artists/artist-edit/artist-edit.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { InsertConfimationSnackBarComponent } from './insert-confimation-snack-bar/insert-confimation-snack-bar.component';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     HomeComponent,
     ArtistDialogComponent,
     ArtistEditComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    InsertConfimationSnackBarComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MatIconModule,
     AppRoutingModule,
     RouterModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

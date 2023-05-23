@@ -18,3 +18,7 @@
 .action button {
   flex: 1;
 }
+
+mat-form-field {
+  margin-right: 12px;
+}

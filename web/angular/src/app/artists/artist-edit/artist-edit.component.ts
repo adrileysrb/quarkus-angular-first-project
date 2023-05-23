@@ -5,6 +5,8 @@ import { Artist } from '../../artist';
 import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { InsertConfimationSnackBarComponent } from '../../insert-confimation-snack-bar/insert-confimation-snack-bar.component';
 
 
 @Component({
@@ -19,7 +21,8 @@ export class ArtistEditComponent {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ){
     this.artistForm = this.fb.group({
       id: '',
@@ -48,6 +51,17 @@ export class ArtistEditComponent {
     return '';
   };
 
+  openSnackBar(success: boolean) {
+    let styleSnackBar = success ? "success-snackbar" : "error-snackbar"
+    this._snackBar.openFromComponent(InsertConfimationSnackBarComponent, {
+      duration: 10000,
+      verticalPosition: "top",
+      horizontalPosition: "center",
+      data: "Success",
+      panelClass: styleSnackBar
+    });
+  }
+
   openDialog2() {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent,{
       data:{
@@ -64,6 +78,7 @@ export class ArtistEditComponent {
       if (confirmed) {
         console.log("Confirmed")
         this.router.navigate(['artist'])
+        this.openSnackBar(false)
       }
     });
   }
