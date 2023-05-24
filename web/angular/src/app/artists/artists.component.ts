@@ -5,7 +5,8 @@ import { Artist } from '../artist';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { InMemoryDatabase } from './inMemoryDatabase';
+import { ArtistInMemoryService } from '../artist-in-memory.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artists',
@@ -13,8 +14,6 @@ import { InMemoryDatabase } from './inMemoryDatabase';
   styleUrls: ['./artists.component.css']
 })
 export class ArtistsComponent implements OnInit{
-  
-  inMemoryDatabase = new InMemoryDatabase();
 
   dataSource = new MatTableDataSource<Artist>();
 
@@ -35,7 +34,12 @@ export class ArtistsComponent implements OnInit{
   };
 
 
-  constructor(private artistService: ArtistsService, formBuilder: FormBuilder){
+  constructor(
+    private artistService: ArtistsService,
+    public formBuilder: FormBuilder,
+    private router: Router,
+    private artistInMemoryService: ArtistInMemoryService
+     ){
 
     this.dataSource.filterPredicate = ((data, filter) => {
       const a = !filter.id || data.id === filter.id;
@@ -64,7 +68,7 @@ export class ArtistsComponent implements OnInit{
       },
       error: (e) => {
         console.error(e);
-        this.inMemoryDatabase.getAll().subscribe({
+        this.artistInMemoryService.getAll().subscribe({
           next: (v) => {
             //console.log(v)
             this.dataSource = new MatTableDataSource<Artist>(v);
@@ -158,11 +162,12 @@ export class ArtistsComponent implements OnInit{
   }
 
   deleteArtist(id: number) {
-    //TODO
+    this.artistInMemoryService.deleteById(id)
   }
 
   openEditForm(data: any) {
-    //TODO
+    console.log(data)
+    this.router.navigate(['artist/artist-edit/', data.id])
   }
 
 }

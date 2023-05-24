@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Artist } from 'src/app/artist';
+import { Artist } from './artist';
 
 const baseUrl = 'http://localhost:8080/';
 
@@ -21,3 +21,4 @@ export class ArtistsService {
   }
 
 }
+ 

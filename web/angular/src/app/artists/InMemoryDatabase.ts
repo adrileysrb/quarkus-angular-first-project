@@ -14,4 +14,32 @@ export class InMemoryDatabase{
     getAll(): Observable<Artist[]>{
         return of(this.inMemoryDatabase);
     }
+
+    getById(id: any) : Observable<Artist> {
+        var result: Artist = {}
+        for(var artist of this.inMemoryDatabase){
+            if(artist.id == id){
+                result = artist
+            }
+        }
+        return of(result)
+    }
+
+    setArtist(value: Artist) {
+        value.id = this.inMemoryDatabase.length + 1
+        this.inMemoryDatabase.push(value);
+    }
+
+    updateArtist(value: Artist) {
+        for(var artist of this.inMemoryDatabase){
+            if(artist.id == value.id && value.id != undefined){
+                this.inMemoryDatabase[value.id - 1] = value
+            }
+        }
+    }
+
+    deleteById(id: any){
+        this.inMemoryDatabase = this.inMemoryDatabase.filter((artist) => artist.id != id)
+    }
+    
 }

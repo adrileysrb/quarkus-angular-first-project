@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { Artist } from '../../artist';
 import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { InsertConfimationSnackBarComponent } from '../../insert-confimation-snack-bar/insert-confimation-snack-bar.component';
 import { ArtistInMemoryService } from '../../artist-in-memory.service';
 
 
-
 @Component({
-  selector: 'app-artist-edit',
-  templateUrl: './artist-edit.component.html',
-  styleUrls: ['./artist-edit.component.css']
+  selector: 'app-artist-insert',
+  templateUrl: './artist-insert.component.html',
+  styleUrls: ['./artist-insert.component.css']
 })
-export class ArtistEditComponent implements OnInit {
+export class ArtistInsertComponent {
   artist: Artist = {} as Artist;
   artistForm: FormGroup;
 
@@ -25,8 +24,7 @@ export class ArtistEditComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private _snackBar: MatSnackBar,
-    private artistInMemoryService: ArtistInMemoryService,
-    private route: ActivatedRoute
+    private artistInMemoryService: ArtistInMemoryService
   ){
     this.artistForm = this.fb.group({
       id: '',
@@ -35,21 +33,6 @@ export class ArtistEditComponent implements OnInit {
       createdDate: '',
     });
     
-  }
-
-  ngOnInit(): void {
-    console.log(this.route.snapshot.params['artistId']);
-    this.artistInMemoryService.getById(this.route.snapshot.params['artistId']).subscribe({
-      next: (v) => {
-        this.artistForm.setValue(v)
-      },
-      error: (e) => {
-        console.log("error")
-      },
-      complete: () => {
-        //do nothing
-      }
-    });
   }
 
   onFormSubmit() {
@@ -96,11 +79,10 @@ export class ArtistEditComponent implements OnInit {
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         console.log("Confirmed")
-        this.artistInMemoryService.updateArtist(this.artistForm.value);
+        this.artistInMemoryService.setArtist(this.artistForm.value);
         this.router.navigate(['artist'])
         this.openSnackBar(false)
       }
     });
   }
-
 }

@@ -32,6 +32,7 @@ import { ArtistEditComponent } from './artists/artist-edit/artist-edit.component
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { InsertConfimationSnackBarComponent } from './insert-confimation-snack-bar/insert-confimation-snack-bar.component';
+import { ArtistInsertComponent } from './artists/artist-insert/artist-insert.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { InsertConfimationSnackBarComponent } from './insert-confimation-snack-b
     ArtistDialogComponent,
     ArtistEditComponent,
     ConfirmationDialogComponent,
-    InsertConfimationSnackBarComponent
+    InsertConfimationSnackBarComponent,
+    ArtistInsertComponent
   ],
   imports: [
     BrowserModule,
